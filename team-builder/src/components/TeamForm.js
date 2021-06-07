@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TeamMembersList (props) {
+function TeamForm(props) {
     const {data, update, build} = props
 
     const changeData = event => {
@@ -14,14 +14,14 @@ function TeamMembersList (props) {
     }
 
     return (
-        <form className='form' changeBuild = {changeBuild}>
-            <div className = 'list entries'>
+        <form className='form' onSubmit = {changeBuild}>
+            <div className = 'form entries'>
                 <label>Name 
                     <input
                         type = 'text'
                         name = 'name'
-                        changeData = {changeData}
-                        data={data.name}
+                        onChange = {changeData}
+                        value={data.name}
                     />
                 </label>
 
@@ -29,8 +29,8 @@ function TeamMembersList (props) {
                     <input
                         type = 'text'
                         name = 'position'
-                        changeData = {changeData}
-                        data = {data.position}
+                        onChange = {changeData}
+                        value = {data.position}
                     />
                 </label>
 
@@ -38,13 +38,13 @@ function TeamMembersList (props) {
                     <input
                         type = 'email'
                         name = 'email'
-                        changeData = {changeData}
-                        data = {data.email}
+                        onChange = {changeData}
+                        value = {data.email}
                     />
                 </label>
 
                 <label> Campus
-                    <select value = {data.campus} name = 'campus' changeData = {changeData}>
+                    <select value = {data.campus} name = 'campus' onChange = {changeData}>
                         <option value =''>--select your campus--</option>
                         <option value = 'SLC'>Salt Lake City</option>
                         <option value = 'DC'>Washington D.C.</option>
@@ -52,11 +52,11 @@ function TeamMembersList (props) {
                 </label>
 
                 <div className='build'>
-                    <button disabled={!data.name || !data.position || !data.email || data.campus}> Submit </button>
+                    <button type='submit'> Submit </button>
                 </div>
             </div>
         </form>
     )
 }
 
-export default TeamMembersList
+export default TeamForm
